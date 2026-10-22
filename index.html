@@ -1,0 +1,262 @@
+ 
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#244b3b">
+<title>Koll på läget – Din vardagsberedskap</title>
+<style>
+:root {
+  --green: #244b3b;
+  --light: #f5f3e9;
+  --card: #ffffff;
+  --muted: #64746b;
+  --accent: #d8e7c5;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--light);
+  color: #20372c;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+header {
+  background: var(--green);
+  color: white;
+  padding: 25px 20px 38px;
+}
+nav, main, footer {
+  max-width: 850px;
+  margin: auto;
+}
+.brand {
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: .85;
+}
+h1 {
+  font-size: clamp(34px, 8vw, 52px);
+  line-height: 1.08;
+  margin: 20px 0 12px;
+}
+header p { max-width: 560px; color: #e4ede5; }
+main { padding: 20px 15px 45px; }
+.card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 21px;
+  margin: 0 0 17px;
+  box-shadow: 0 3px 14px #20372c0a;
+}
+h2 { font-size: 22px; margin: 0 0 10px; }
+h3 { font-size: 17px; margin: 0 0 5px; }
+p { margin: 7px 0 12px; }
+.small { font-size: 13px; color: var(--muted); }
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.link {
+  display: block;
+  border: 1px solid #dce5da;
+  border-radius: 12px;
+  padding: 13px;
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 650;
+}
+.link span {
+  display: block;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 13px;
+  margin-top: 3px;
+}
+.link:hover { background: #f1f6ec; }
+.weather {
+  background: var(--accent);
+  border-radius: 15px;
+  padding: 17px;
+}
+.weather strong { font-size: 21px; }
+.progress-bg {
+  background: #e6ebe4;
+  height: 9px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+#progress {
+  background: var(--green);
+  height: 100%;
+  width: 0;
+  transition: width .2s;
+}
+.item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 13px 0;
+  border-bottom: 1px solid #edf0ea;
+}
+.item:last-child { border-bottom: 0; }
+.item input {
+  width: 21px;
+  height: 21px;
+  margin-top: 3px;
+  accent-color: var(--green);
+  flex-shrink: 0;
+}
+.item label { flex: 1; cursor: pointer; }
+.item input:checked + label { color: #718076; }
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  background: var(--green);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 5px 5px 0 0;
+}
+button.secondary {
+  background: #e9eee5;
+  color: var(--green);
+}
+.notice {
+  border-left: 4px solid #9ebc83;
+  padding: 10px 13px;
+  background: #f5f8f1;
+  font-size: 14px;
+}
+footer {
+  padding: 0 20px 30px;
+  font-size: 13px;
+  color: var(--muted);
+}
+a { overflow-wrap: anywhere; }
+@media print {
+  header { background: white; color: black; padding: 10px; }
+  header p, .links, button, footer { display: none; }
+  main { padding: 10px; }
+  .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
+  body { background: white; }
+}
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <div class="brand">Enklare vardagsberedskap</div>
+    <h1>Koll på läget.</h1>
+    <p>Små steg som gör vardagen tryggare. Hitta viktig information och se hur väl förberedd du är om något oväntat händer.</p>
+  </nav>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Just nu</h2>
+    <div class="weather">
+      <strong>Vädret i Vallentuna</strong>
+      <p id="weather">Väderdata är inte ansluten ännu.</p>
+      <div class="small" id="weatherTime">Detta är en prototyp – inga aktuella vädervärden visas.</div>
+    </div>
+    <div class="links">
+      <a class="link" href="https://www.smhi.se/vader" target="_blank" rel="noopener">
+        Väder och prognoser <span>SMHI – officiell information</span>
+      </a>
+      <a class="link" href="https://www.smhi.se/vader/varningar-och-meddelanden" target="_blank" rel="noopener">
+        Vädervarningar <span>Kontrollera aktuella varningar</span>
+      </a>
+      <a class="link" href="https://www.krisinformation.se/" target="_blank" rel="noopener">
+        Krisinformation.se <span>Information från myndigheter</span>
+      </a>
+      <a class="link" href="https://www.trafikverket.se/trafikinformation/" target="_blank" rel="noopener">
+        Trafikläget <span>Vägar och trafik</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Din beredskap</h2>
+    <p>Du behöver inte ordna allt på en gång. Börja med det du saknar mest.</p>
+    <strong id="count">0 av 10 klara</strong>
+    <div class="progress-bg"><div id="progress"></div></div>
+    <div id="checklist">
+      <div class="item"><input type="checkbox" id="c1"><label for="c1">Dricksvatten hemma för flera dagar</label></div>
+      <div class="item"><input type="checkbox" id="c2"><label for="c2">Mat som håller länge och kan ätas utan tillagning</label></div>
+      <div class="item"><input type="checkbox" id="c3"><label for="c3">Ficklampa och extra batterier</label></div>
+      <div class="item"><input type="checkbox" id="c4"><label for="c4">Batteridriven radio eller annan fungerande informationskälla</label></div>
+      <div class="item"><input type="checkbox" id="c5"><label for="c5">Laddad powerbank och laddkablar</label></div>
+      <div class="item"><input type="checkbox" id="c6"><label for="c6">Nödvändiga mediciner och första hjälpen</label></div>
+      <div class="item"><input type="checkbox" id="c7"><label for="c7">Kontanter och viktiga telefonnummer på papper</label></div>
+      <div class="item"><input type="checkbox" id="c8"><label for="c8">Värme: filtar, varma kläder och mössor</label></div>
+      <div class="item"><input type="checkbox" id="c9"><label for="c9">Hygienartiklar och möjlighet att sköta toalettbehov</label></div>
+      <div class="item"><input type="checkbox" id="c10"><label for="c10">Plan för familj, husdjur och kontakt om mobilnätet ligger nere</label></div>
+    </div>
+    <p class="small">Dina kryss sparas i webbläsaren på den här enheten.</p>
+    <button onclick="window.print()">Skriv ut checklistan</button>
+    <button class="secondary" onclick="resetList()">Börja om</button>
+  </section>
+
+  <section class="card">
+    <h2>Vad är viktigast?</h2>
+    <p>Vid ett längre elavbrott eller en annan samhällsstörning kan vatten, värme, information och möjligheten att kontakta andra bli extra viktiga.</p>
+    <div class="notice">
+      <strong>Börja enkelt:</strong> Se över vad du redan har hemma och komplettera lite i taget. Följ alltid myndigheternas aktuella råd.
+    </div>
+    <div class="links">
+      <a class="link" href="https://www.msb.se/" target="_blank" rel="noopener">
+        Myndigheten för civilt försvar <span>Råd om hemberedskap</span>
+      </a>
+      <a class="link" href="https://www.krisinformation.se/" target="_blank" rel="noopener">
+        Förbered dig <span>Samlad myndighetsinformation</span>
+      </a>
+    </div>
+  </section>
+  <p class="small">Koll på läget är ett fristående projekt, inte en myndighetstjänst. Kontrollera alltid viktig information hos den officiella källan.</p>
+</main>
+
+<footer>
+  Prototypversion · Väderdata och automatiska larm är ännu inte anslutna.
+</footer>
+
+<script>
+const boxes = [...document.querySelectorAll('#checklist input')];
+
+function update() {
+  const done = boxes.filter(box => box.checked).length;
+  document.getElementById('count').textContent =
+    done + ' av ' + boxes.length + ' klara';
+  document.getElementById('progress').style.width =
+    (done / boxes.length * 100) + '%';
+  boxes.forEach(box => {
+    try {
+      localStorage.setItem('koll-' + box.id, box.checked ? '1' : '0');
+    } catch (e) {}
+  });
+}
+
+boxes.forEach(box => {
+  try {
+    box.checked = localStorage.getItem('koll-' + box.id) === '1';
+  } catch (e) {}
+  box.addEventListener('change', update);
+});
+
+function resetList() {
+  if (confirm('Vill du nollställa checklistan?')) {
+    boxes.forEach(box => box.checked = false);
+    update();
+  }
+}
+update();
+</script>
+</body>
+</html>
